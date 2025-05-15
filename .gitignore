@@ -1,0 +1,30 @@
+# Node.js dependencies
+/frontend/node_modules/
+
+# Java build output
+/backend/target/
+
+# Logs
+*.log
+
+# IDE/editor folders
+/.idea/
+/.vscode/
+
+# Environment variables
+.env
+
+# MacOS files
+.DS_Store
+
+# NPM debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite cache
+/frontend/.vite/
+
+# Build output
+/frontend/dist/
