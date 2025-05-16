@@ -16,7 +16,7 @@ This project contains the backend and frontend code for a Flight Finder applicat
 
 ### Frontend
 
-1. Navigate to \frontend/\
+1. Navigate to \frontend
 2. Run \npm install\ (if you haven’t already)
 3. Run \npm run dev\ to start the React development server
 
