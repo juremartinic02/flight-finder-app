@@ -1,0 +1,11 @@
+# frontend/.dockerignore
+
+.git
+.gitignore
+node_modules/
+dist/ # Or 'build/' if using Create React App
+.env # If you ever create local .env files for frontend, they should be ignored
+
+.idea/
+*.iml
+.vscode/

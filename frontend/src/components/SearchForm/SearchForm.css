@@ -1,0 +1,98 @@
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start; /* Keep this for top alignment of the field boxes */
+  width: 100%;
+}
+
+.field {
+  flex: 1 1 132px;    /* Default flex behavior for input fields */
+  max-width: 198px;  /* Default max-width for input fields */
+  position: relative;
+  padding-bottom: 1.5em; 
+  display: flex;        
+  flex-direction: column;
+  justify-content: flex-start; 
+}
+
+.field input,
+.field select,
+.date-input {
+  width: 100%; 
+  height: 62px; 
+  padding: 0 1rem;
+  font-size: 1.1rem;
+  color: #000;
+  border: 1px solid #CCC;
+  border-radius: 8px;
+  background: #FFF;
+  box-sizing: border-box;
+}
+
+/* .date-input {
+  background-image: url('/calendar.svg'); 
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem 1.2rem;
+  cursor: pointer;
+} */
+
+.field-button-wrapper {
+  flex: 0 1 auto;    
+  max-width: none;   
+  margin-left: auto; 
+}
+
+.field-helper-text {
+  position: absolute;   
+  bottom: 0;            
+  left: 0.1rem;         
+  width: calc(100% - 0.2rem); 
+  font-size: 0.75rem;
+  color: #777;
+  line-height: 1.3;     
+  text-align: left;
+}
+
+.error-message {
+  color: #e65546;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;  
+  display: block;     
+  width: 100%;
+  text-align: left;  
+  padding-left: 0.1rem;
+}
+
+.field input[type="number"]::-webkit-inner-spin-button,
+.field input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+}
+
+.field input[type="number"] {
+  -moz-appearance: textfield; /* For firefox*/
+  appearance: textfield; /* Standard property*/
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .field {
+    /* This applies to all .field divs by default on mobile */
+    flex-grow: 1; /* Allow it to grow into the flex-basis */
+    flex-shrink: 1; /* Allow it to shrink if necessary */
+    flex-basis: calc(50% - 0.5rem); /* Target two items per row considering a 1rem gap */
+    width: calc(50% - 0.5rem); /* Explicitly set width as well */
+    max-width: calc(50% - 0.5rem); /* Crucial: override desktop max-width */
+    /* The padding-bottom: 1.5em; from desktop styles still applies, which is fine */
+  }
+  
+  /* The button wrapper on mobile should take full width */
+  .field-button-wrapper {
+    flex-basis: 100%; /* Make the button wrapper take full width */
+    width: 100%;      /* Explicitly set width */
+    max-width: 100%;  /* Override desktop max-width and any 50% calc from .field */
+    margin-left: 0;   /* Reset desktop margin */
+  }
+}

@@ -1,0 +1,38 @@
+version: '3.8' # Specifies the Docker Compose file format version
+
+services:
+  # Backend Service (Spring Boot Application)
+  backend:
+    build:
+      context: ./backend # Path to the directory containing the backend's Dockerfile
+    container_name: aeroking-backend
+    ports:
+      - "8080:8080" # Maps port 8080 on your host machine to port 8080 in the container
+    environment:
+      # This activates the 'local' profile in Spring Boot application.
+      # This profile will load backend/src/main/resources/application-local.properties,
+      # which should contain Amadeus API keys for this evaluation setup.
+      - SPRING_PROFILES_ACTIVE=local
+    networks:
+      - aeroking-network
+
+  # Frontend Service (React Application)
+  frontend:
+    build:
+      context: ./frontend # Path to the directory containing the frontend's Dockerfile
+    container_name: aeroking-frontend
+    ports:
+      - "5173:80" # Maps port 5173 on host to port 80 (Nginx default) in the container
+    environment:
+      # This environment variable will be available to React app inside the container.
+      # It tells the React app that the backend API is accessible via http://backend:8080
+      # 'backend' is the service name of your backend container defined above.
+      - VITE_API_BASE_URL=http://backend:8080 
+    depends_on:
+      - backend # Tells Docker Compose to start the backend service before the frontend service
+    networks:
+      - aeroking-network
+
+networks:
+  aeroking-network: # Defines a custom bridge network for the services
+    driver: bridge

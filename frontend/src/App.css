@@ -1,0 +1,204 @@
+/* Global box-sizing */
+/* Ensures padding and border do not add to the element's total width or height */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevents horizontal overflow */
+/* Basic reset for html and body to remove default browser margins/padding */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* CSS variables */
+:root {
+  --navbar-height: 64px; /* Fixed navbar hight*/
+  --bg: #00004d;
+  --card-bg: #FFF;
+  --text: #000;
+  --subtext: #555;
+  --main-content-width: 1600px; /* Max width for the main content area*/
+}
+
+/* Global .search-button (used by both Search Flights and Select buttons) jusg*/
+.search-button {
+  background: #0072ce;
+  color: #fff;
+  border: none; /* Removes default browser border */
+  width: 176px;
+  height: 62px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s; /* Smooth transition for background color changes on hover */
+}
+
+/* Hover state for the search button */
+.search-button:hover {
+  background: #005bb5;
+}
+
+/* App container */
+/* Styles for the #root and the main .App container*/
+#root,
+.App {
+  background: var(--bg);
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden; /* Keep this to prevent horizontal scroll on .App */
+}
+
+/* Page container for content below navbar */
+.page-container {
+  padding-top: calc(var(--navbar-height) + 1.2rem); /* navbar height + desired initial gap */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.2rem; /* Consistent gap at the bottom */
+  
+  /* These existing flex properties are for centering content *within* .page-container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  
+  width: 100%; /* Ensure it takes full width */
+  box-sizing: border-box;
+}
+
+/* Branding container */
+.branding {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.2rem 0;
+}
+
+/* Styles for the main application title */
+.brand-title {
+  margin: 0 0 0.2rem;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #FFF;
+}
+
+/* Styles for the application tagline */
+.brand-tagline {
+  margin: 0 0 0rem;
+  font-size: 1.5rem;
+  color: #FFF;
+}
+
+/* Search form & Results panels share width, styling, and padding */
+.search-card,
+.results {
+  width: 100%;
+  max-width: var(--main-content-width);
+  margin: 0 auto; /* This will center them if .page-container is full width */
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+/* Status messages */
+.status {
+  text-align: center;
+  color: var(--subtext);
+  font-size: 1rem;
+}
+
+.status.error {
+  color: #E65546;
+}
+
+/* Table wrapper */
+.results-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Offers table */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #000;
+  margin: 0;
+}
+
+.results-table th,
+.results-table td {
+  border: 1px solid #CCC;
+  padding: 0.45rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.results-table th {
+  background: #F5F5F5;
+}
+
+/* Right-align the Select column’s buttons */
+.results-table th:last-child,
+.results-table td:last-child {
+  background: transparent;
+  border: none;
+  text-align: right;
+  padding-right: 0;
+  white-space: normal;
+}
+
+/* “No offers” message */
+.no-offers {
+  color: #000;
+  font-size: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .page-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .search-form input,
+  .search-form select {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+
+  /* Ensure the global .search-button style takes full width on mobile */
+  .search-button {
+    width: 100%;
+  }
+
+  .search-card,
+  .results {
+    max-width: 100%;
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1rem;
+  }
+
+  .brand-title {
+    font-size: 2rem;
+  }
+
+  .brand-tagline {
+    font-size: 1rem;
+  }
+
+  /* Reduce padding in table cells on mobile */
+  .results-table th,
+  .results-table td {
+    padding: 0.3rem 0.5rem;
+  }
+}

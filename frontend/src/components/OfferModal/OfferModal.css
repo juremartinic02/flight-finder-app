@@ -1,0 +1,124 @@
+/*Styles for the full-screen overlay that is situated behind the modal content*/
+/*"Dimmed background effect"*/
+.modal-overlay {
+  position: fixed; /*Fixed position to cover the entire viewport*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+  backdrop-filter: blur(3px); /* Blur effect on background */
+}
+
+/* Styles for the main modal dialog box that contains the content*/
+.modal-content {
+  background-color: #fff;
+  padding: 25px 30px; /* Inner spacing for the modal content*/
+  border-radius: 10px; /*Rounded corners*/
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 550px; /* Max width of the modal */
+  position: relative;
+  color: #333; /* Text color inside modal */
+  animation: fadeInModal 0.3s ease-out;
+}
+
+/* Defines the keyframes for the modal's fade-in and slight upward slide animation*/
+@keyframes fadeInModal {
+  from { 
+    opacity: 0; /*Starts fully transperent*/
+    transform: translateY(-20px); /*Start slightly above its final position*/
+  }
+  to { 
+    opacity: 1; /*End fully dim*/
+    transform: translateY(0); /*End at its normal position*/
+  }
+}
+
+/* Styles for the main title (h2) inside the modal. */
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #0072ce;
+  text-align: center;
+}
+
+/* Styles for the 'X' close button, typically positioned at the top-right of the modal. */
+.modal-close-button {
+  position: absolute; /*Position relative to the .modal-content parent*/
+  top: 15px;
+  right: 15px;
+
+  background: transparent;
+  border: none;
+  font-size: 1.8rem; /*Size of the x character*/
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close-button:hover {
+  color: #555;
+}
+
+/* Styles for the grid layout used to display flight offer details*/
+.offer-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 10px 20px;
+  margin-bottom: 20px;
+}
+
+/* Styles for each individual item (label + value pair) within the details grid*/
+.detail-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Remove the bottom border from the very last detail item in the grid*/
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+/* Styles for the label part for example "Origin:" of a detail item*/
+.detail-item strong {
+  color: #005bb5;
+  margin-right: 8px;
+}
+
+/* Container for action buttons at the bottom of the modal*/
+.modal-actions {
+  text-align: center; /* Center the button(s) within this div */
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+/* Styles for the "Buy Now" button*/
+.buy-now-button {
+  background-color: #28a745; /* Green color for "Buy Now" */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px; /* Consistent with .search-button */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  min-width: 150px;
+}
+
+.buy-now-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.buy-now-button:disabled {
+  background-color: #5cb85c;
+  cursor: not-allowed;
+}
