@@ -102,6 +102,39 @@ This application requires Amadeus API credentials to fetch flight data.
         ```
 3.  The backend server will start on `http://localhost:8080`.
 
+### 4. H2 Database Console
+
+For development and testing, the application uses an **H2 in-memory database** as a lightweight cache. To view and query the database:
+
+1.  **Enable the H2 Console** (in `application.properties` or `application.yml`):
+    ```properties
+    spring.h2.console.enabled=true
+    spring.h2.console.path=/h2-console
+
+    # In-memory datasource settings
+    spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    spring.datasource.username=sa
+    spring.datasource.password=
+    spring.datasource.driver-class-name=org.h2.Driver
+    ```
+    *Restart the backend server so settings take effect.*
+
+2.  **Access the Console:**
+    Open your browser and navigate to: <http://localhost:8080/h2-console>
+
+3.  **Login with:**
+    * **JDBC URL:** `jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`
+    * **User Name:** `sa`
+    * **Password:** (leave blank)
+
+Once connected, you can run SQL queries against the `flight_offer` table, for example:
+
+``` sql
+SELECT * FROM flight_offer;
+```
+
+This allows you to inspect cached flight offers directly, speeding up development and debugging.
+
 **B. Frontend:**
 1.  Open a new terminal.
 2.  Navigate to the `frontend` directory: `cd frontend`

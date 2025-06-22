@@ -57,7 +57,7 @@ public class AmadeusConfig {
                 .build();
     }
 
-    //Performs the OAuth2 Client Credentials flow to retrieve a bearer token.
+    // Performs the OAuth2 Client Credentials flow to retrieve a bearer token.
     public String fetchAccessToken() {
         WebClient tokenClient = WebClient.builder()
             .baseUrl(oauthUrl)
